@@ -3,25 +3,37 @@
 ////////////////////////////////////
 
 /////////CLASS TYPE INT/////////////
-function int(value){
-    let val=value || 0;
+function int(error){
+    let val;
+
+    //int(error);
+        
+    if(error!=undefined){
+        console.log("Don't put the value on the instance!");//provisional
+    }
+    
 
     let comp=function(value){
-        if(typeof(value || val)=='number'){
-            return true;
-        }
-        else{
-            return false;
-        }
+        let expresionFloat=/[.]/;
+        let comprobar=value.toString();
+        let punto=expresionFloat.test(comprobar);
+
+        return typeof(value)=='number' && !punto;
     }
 
     this.int=function(value){
-        if(comp(value || val)){
-            val=value || val;
+        if(comp(value)){
+            val=value;
             return val;
         }
         else{
-            console.log("You can't use a " + typeof(value) + " to Int value!");
+            if(typeof(value)=='number'){
+                console.log("You can't use a Float to Int value!");
+            }
+            else{
+                console.log("You can't use a " + typeof(value) + " to Int value!");
+            }
+            
         }
     }
     
@@ -29,12 +41,18 @@ function int(value){
 //////////////////////////
 
 ///////CLASS TYPE CHAR////////
-function char(value){
-    let val=value || 0;
+function char(error){
+    let val;
+
+    if(error!=undefined){
+        console.log("Don't put the value on the instance!");//provisional
+    }
 
     let comp=function(value){
-        if(typeof(value || val)=='char'){
-            return true;
+        if(typeof(value)=='string'){
+            if(value.length<=1){
+                return true;
+            }
         }
         else{
             return false;
@@ -42,19 +60,17 @@ function char(value){
     }
 
     this.char=function(value){
-        if(comp(value || val)){
-            val=value || val;
+        if(comp(value)){
+            val=value;
             return val;
         }
         else{
-            console.log("You can't use a " + typeof(value) + " to Int value!");
+            console.log("You can't use a " + typeof(value) + " to Char value!");
         }
     }
 }
 //////////////////////////////
 
+var hola=new int();
 
-console.log(typeof('c'));
-algo=new int(5);
-console.log(algo.int());
-console.log(algo.int("hola"));
+console.log(hola.int(3.0));
