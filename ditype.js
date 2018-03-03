@@ -2,6 +2,30 @@
 /////////CLASSES FOR TYPES//////////
 ////////////////////////////////////
 
+
+/////////CLASS TYPE FLOAT///////////
+function float(error){
+    let val;
+
+    if(error!=undefined){
+        console.log("Don't put the value on the instance!");//provisional
+    }
+
+    this.float=value=>{
+        if(comp(value || val)){
+            val=value || val;
+            return val;
+        }
+        else{
+            console.log("You can't use a " + typeof(value) + " to Float value!")
+        }
+    }
+
+    let comp=value=>typeof(value)=='number';
+
+}
+////////////////////////////////////
+
 /////////CLASS TYPE INT/////////////
 function int(error){
     let val;
@@ -13,7 +37,7 @@ function int(error){
     }
     
 
-    let comp=function(value){
+    let comp=value=>{
         let expresionFloat=/[.]/;
         let comprobar=value.toString();
         let punto=expresionFloat.test(comprobar);
@@ -21,9 +45,9 @@ function int(error){
         return typeof(value)=='number' && !punto;
     }
 
-    this.int=function(value){
-        if(comp(value)){
-            val=value;
+    this.int=value=>{
+        if(comp(value || val)){
+            val=value || val;
             return val;
         }
         else{
@@ -38,7 +62,7 @@ function int(error){
     }
     
 }
-//////////////////////////
+//////////////////////////////
 
 ///////CLASS TYPE CHAR////////
 function char(error){
@@ -48,7 +72,7 @@ function char(error){
         console.log("Don't put the value on the instance!");//provisional
     }
 
-    let comp=function(value){
+    let comp=value=>{
         if(typeof(value)=='string'){
             if(value.length<=1){
                 return true;
@@ -59,18 +83,72 @@ function char(error){
         }
     }
 
-    this.char=function(value){
-        if(comp(value)){
-            val=value;
+    this.char=value=>{
+        let type=typeof(value);
+        if(comp(value || val)){
+            val=value || val;
             return val;
         }
         else{
-            console.log("You can't use a " + typeof(value) + " to Char value!");
+            console.log("You can't use a " + type + " to Char value!");
         }
     }
 }
-//////////////////////////////
+//////////////////////////////////
 
-var hola=new int();
+/////////CLASS TYPE STRING////////////
+function string(error){
+    let val;
 
-console.log(hola.int(3.0));
+    if(error!=undefined){
+        console.log("Don't put the value on the instance!");//provisional
+    }
+
+    this.string=value=>{
+        if(typeof(value)=='string'){
+            val = value || val;
+            return val;
+        }
+        else{
+            console.log("You can't use a " + type + " to String value!");
+        }
+    }
+}
+//////////////////////////////////////
+
+/////////////CLASS TYPE BOOLEAN///////////
+function bool(error){
+    let val;
+
+    if(error!=undefined){
+        console.log("Don't put the value on the instance!");//provisional
+    }
+    
+    let comp=value=>typeof(value)=='boolean';
+
+    this.bool=value=>{
+        if(comp(value || val)){
+            val=value || val;
+            return val;
+        }
+        else{
+            console.log("You can't use a " + typeof(value) + " to Boolean value!");
+        }
+    }
+}
+//////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+
+/*let hola=new int();
+
+hola.int(function(){//Don't support functions
+    return 3;
+})*/
+
+hola=new bool();
+hola.bool(2);
+
+console.log(hola.bool());
