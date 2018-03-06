@@ -2,7 +2,7 @@
 /////////CLASSES FOR TYPES//////////
 ////////////////////////////////////
 
-
+"use strict";
 /////////CLASS TYPE FLOAT///////////
 function float(error){
     let val;
@@ -150,32 +150,8 @@ hola.int(function(){//Don't support functions
 
 
 //pruebas
-hola=new bool();
-hola.bool(2);
+let hello=new bool();
+hello.bool(2);
 
-console.log(hola.bool());
+console.log(hello.bool());
 
-function algo(){
-    let val;
-    this.func.algo={};
-    this.algo=value=>{
-        val=value || val;
-        //return algo;
-    }
-}
-
-adios=new algo();
-
-
-
-adios.algo.fun=function(valor){
-    return valor;
-}
-
-adios.algo(valor,'func');
-
-adios.algo(function(){
-
-});
-
-console.log(adios.algo(2));
